@@ -1,6 +1,7 @@
 # Guide to integrate react-native-maps
 
-Video guide available here:
+Video guide available here: https://youtu.be/XTwpYtNTV48
+[![Video guide](http://i.imgur.com/Zz18vQD.png)](https://youtu.be/XTwpYtNTV48)
 
 ## Step 01: Create new project (ignore if you have one existing) and 
 ```
