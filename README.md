@@ -54,7 +54,7 @@ open MyMap.xcworkspace
 open .
 ```
 
-Your project will be open in Xcode, drag n drop `AirGoogleMaps` dir in `MyMap/node_modules/react-native-maps/ios/lib` to your Xcode project.
+Your project will be open in Xcode, drag n drop `AirGoogleMaps` dir in `MyMap/node_modules/react-native-maps/lib/ios` to your Xcode project.
 
 ## Step 06: Enable Google Map SDK for iOS and Google Map Android API
 
