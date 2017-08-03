@@ -3,6 +3,9 @@
 Video guide available here: https://youtu.be/XTwpYtNTV48
 [![Video guide](http://i.imgur.com/Zz18vQD.png)](https://youtu.be/XTwpYtNTV48)
 
+
+## This example still work well on `React Native 0.47.1`
+
 ## Step 01: Create new project (ignore if you have one existing) and 
 ```
 react-native init MyMap
@@ -33,7 +36,7 @@ platform :ios, '8.0'
 
 target 'MyMap' do
   pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
-  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+  pod 'React', path: '../node_modules/react-native', :subspecs => [
     'Core',
     'RCTActionSheet',
     'RCTAnimation',
@@ -48,18 +51,6 @@ target 'MyMap' do
     'BatchedBridge'
   ]
   pod 'GoogleMaps'
-  pod 'react-native-maps', path: '../node_modules/react-native-maps'
-  pod 'react-native-google-maps', path: '../node_modules/react-native-maps'
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    if target.name == "react-native-google-maps"
-      target.build_configurations.each do |config|
-        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
-      end
-    end
-  end
 end
 ```
 
@@ -76,9 +67,7 @@ open MyMap.xcworkspace
 open .
 ```
 
-Your project will be open in Xcode, drag n drop `AirGoogleMaps` dir in `MyMap/node_modules/react-native-maps/lib/ios` to your Xcode project.
-
-Then go to `Build Settings` and search for `Header Search Path`, then press `+`, paste this line `$(SRCROOT)/../node_modules/react-native-maps/lib/ios/AirMaps` with `recursive`  **(I will not drag and drop AirMaps to your ios project)**
+Your project will be open in Xcode, drag and drop both `AirGoogleMaps`, `AirMaps` dir in `MyMap/node_modules/react-native-maps/lib/ios` to your Xcode project.
 
 ## Step 06: Enable Google Map SDK for iOS and Google Map Android API
 
