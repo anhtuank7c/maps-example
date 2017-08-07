@@ -4,7 +4,7 @@ Video guide available here: https://youtu.be/XTwpYtNTV48
 [![Video guide](http://i.imgur.com/Zz18vQD.png)](https://youtu.be/XTwpYtNTV48)
 
 
-## This example still work well on `React Native 0.47.1`
+## This example still work well on `React Native 0.46.4`, version `0.47.1` work well on iOS but broken on [Android](https://github.com/airbnb/react-native-maps/issues/1523) (fixed in master, not in release)
 
 ## Step 01: Create new project (ignore if you have one existing) and 
 ```
