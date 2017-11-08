@@ -103,7 +103,7 @@ Then create new `Credentials` key
 
 You're done setting up iOS project, you can now `react-native run-ios`
 
-## Step 07: Paste these line to `android/build.gralde` to update all subprojects gradle
+## Step 07: Paste these line to `android/build.gradle` to update all subprojects gradle
 
 ```
 subprojects {
@@ -119,7 +119,7 @@ subprojects {
 
 ```
 
-## Step 08: Paste these line to `android/settings.gralde`
+## Step 08: Paste these line to `android/settings.gradle`
 
 ```
 include ':react-native-maps'
