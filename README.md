@@ -102,9 +102,47 @@ Then create new `Credentials` key
 
 You're done setting up iOS project, you can now `react-native run-ios`
 
-## Step 07: Paste these line to `android/app/build.gradle`
+## Step 07: Paste these line to `android/build.gralde` to update all subprojects gradle
 
 ```
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion 25
+                buildToolsVersion '25.0.0'
+            }
+        }
+    }
+}
+
+```
+
+## Step 08: Paste these line to `android/settings.gralde`
+
+```
+include ':react-native-maps'
+project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/lib/android')
+
+```
+
+## Step 09: Paste these line to `android/app/build.gradle`
+
+```
+// upgrade sdk version
+android {
+    compileSdkVersion 25 // use version 25
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        targetSdkVersion 23 // Upgrade target to 23 (You will need use this to check android permission correctly)
+        ...
+    }
+    ...
+}
+
+
+// update dependencies
 dependencies {
     ...
     // Paste these line
@@ -112,25 +150,98 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
+    compile 'com.google.android.gms:play-services-location:11.+' // disable if you don't want to use enableHighAccuracy: true in geolocation
     compile 'com.google.android.gms:play-services-base:11.+'
     compile 'com.google.android.gms:play-services-maps:11.+'
 }
 ```
 
-## Step 08: Insert key to `android/app/src/AndroidManifest.xml` (Very important)
+## Step 10: Insert key to `android/app/src/AndroidManifest.xml` (Very important)
 
 ```
 <application>
     <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
     <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="YOUR GOOGLE MAPS API KEY HERE"/>
+      android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE"/>
+    ...
 </application>
 ```
 
-# WE ARE GOOD TO GO.
+## Step 11: Edit `MainApplication.java`
+
+```
+import com.airbnb.android.react.maps.MapsPackage;
 
 
+// getPackages
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      ...,
+      new MapsPackage() // INSERT THIS LINE
+  );
+}
+
+```
+
+# WE ARE DONE
+
+## Now try to display a map
+
+```
+import React from 'react';
+import { View, Text } from 'react-native';
+import MapView from 'react-native-maps';
+
+export default class MyMap extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.text}>Welcome to react-native-maps</Text>
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: 20.9948891,
+                        longitude: 105.799677,
+                        latitudeDelta: 0.002,
+                        longitudeDelta: 0.002
+                    }}
+                >
+                    <MapView.Marker
+                        coordinate={{
+                            latitude: 20.9948891,
+                            longitude: 105.799677,
+                        }}
+                    />
+                </MapView>
+            </View>
+        );
+    }
+}
+
+const styles = {
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
+    },
+    text: {
+        fontSize: 30,
+        fontWeight: '700',
+        color: '#59656C',
+        marginBottom: 10,
+    },
+    map: {
+        width: null,
+        height: 300,
+        flex: 1
+    }
+};
+
+```
 
 # LICENSE
 
