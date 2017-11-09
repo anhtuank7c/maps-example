@@ -160,19 +160,28 @@ dependencies {
 ## Step 10: Insert key to `android/app/src/AndroidManifest.xml` (Very important)
 
 ```
-<application>
-    <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
-    <meta-data
-      android:name="com.google.android.geo.API_KEY"
-      android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE"/>
-    ...
-</application>
+<manifest
+...
+    // 2 Permission bellow are not required, just use when you have to use geolocation API
+    // If you need FINE location, insert this one
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    // Or insert this line if you don't need FINE location
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application>
+        <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
+        <meta-data
+          android:name="com.google.android.geo.API_KEY"
+          android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE"/>
+        ...
+    </application>
+</manifets?
 ```
 
 ## Step 11: Edit `MainApplication.java`
 
 ```
-import com.airbnb.android.react.maps.MapsPackage;
+import com.airbnb.android.react.maps.MapsPackage;  // INSERT THIS LINE
 
 
 // getPackages
@@ -187,9 +196,16 @@ protected List<ReactPackage> getPackages() {
 
 ```
 
-# WE ARE DONE
+# WE ARE DONE.
 
-## Now try to display a map
+YOU ARE NOW READY TO FOLLOW [AIRBNB USAGE GUIDE.](https://github.com/airbnb/react-native-maps)
+
+
+##########################################################################
+
+# ONE MORE THING
+
+## You can display a map right now.
 
 ```
 import React from 'react';
@@ -197,25 +213,19 @@ import { View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class MyMap extends React.Component {
+    state = {
+        latitude: 20.9948891,
+        longitude: 105.799677,
+        latitudeDelta: 0.002,
+        longitudeDelta: 0.002
+    }
+    
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Welcome to react-native-maps</Text>
-                <MapView
-                    style={styles.map}
-                    initialRegion={{
-                        latitude: 20.9948891,
-                        longitude: 105.799677,
-                        latitudeDelta: 0.002,
-                        longitudeDelta: 0.002
-                    }}
-                >
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 20.9948891,
-                            longitude: 105.799677,
-                        }}
-                    />
+                <MapView style={styles.map} initialRegion={this.state}>
+                    <MapView.Marker coordinate={this.state} />
                 </MapView>
             </View>
         );
