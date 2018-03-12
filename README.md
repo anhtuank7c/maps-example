@@ -36,7 +36,6 @@ target 'MyMap' do
         'RCTText',
         'RCTVibration',
         'RCTWebSocket',
-        'BatchedBridge',
         'DevSupport'
     ]    
     
