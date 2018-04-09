@@ -71,9 +71,6 @@ open MyMap.xcworkspace
 open .
 ```
 
-- Drag this folder `node_modules/react-native-maps/lib/ios/AirGoogleMaps/` into your project, and choose `Create groups` in the popup window.
-- In your project's `Build Settings` > `Header Search Paths`, double click the value field. In the popup, add `$(SRCROOT)/../node_modules/react-native-maps/lib/ios/AirMaps` and change `non-recursive` to `recursive`
-
 ## Step 05: Enable Google Map SDK for iOS and Google Map Android API (Very important)
 
 Go to [Google console](https://console.developers.google.com/apis/library), choose or create new project, go to library then enable 2 libraries:
