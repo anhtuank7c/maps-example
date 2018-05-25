@@ -20,7 +20,7 @@ Open `Podfile` in your vscode (atom, phpstorm etc...)
 # Podfile content
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'MyMap' do
     pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
@@ -109,8 +109,8 @@ subprojects {
     afterEvaluate {project ->
         if (project.hasProperty("android")) {
             android {
-                compileSdkVersion 25
-                buildToolsVersion '25.0.0'
+                compileSdkVersion 27
+                buildToolsVersion '27.0.3'
             }
         }
     }
@@ -131,8 +131,8 @@ project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../
 ```
 // upgrade sdk version
 android {
-    compileSdkVersion 25 // use version 25
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         targetSdkVersion 23 // Upgrade target to 23 (You will need use this to check android permission correctly)
@@ -150,9 +150,9 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
-    compile 'com.google.android.gms:play-services-location:11.+' // disable if you don't want to use enableHighAccuracy: true in geolocation
-    compile 'com.google.android.gms:play-services-base:11.+'
-    compile 'com.google.android.gms:play-services-maps:11.+'
+    compile 'com.google.android.gms:play-services-location:15.+' // disable if you don't want to use enableHighAccuracy: true in geolocation
+    compile 'com.google.android.gms:play-services-base:15.+'
+    compile 'com.google.android.gms:play-services-maps:15.+'
 }
 ```
 
