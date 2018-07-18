@@ -160,9 +160,9 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
-    compile 'com.google.android.gms:play-services-location:15.+' // disable if you don't want to use enableHighAccuracy: true in geolocation
-    compile 'com.google.android.gms:play-services-base:15.+'
-    compile 'com.google.android.gms:play-services-maps:15.+'
+    compile "com.google.android.gms:play-services-location:${rootProject.ext.googlePlayServicesVersion}" // disable if you don't want to use enableHighAccuracy: true in geolocation
+    compile "com.google.android.gms:play-services-base:${rootProject.ext.googlePlayServicesVersion}"
+    compile "com.google.android.gms:play-services-maps:${rootProject.ext.googlePlayServicesVersion}"
 }
 ```
 
