@@ -105,6 +105,16 @@ You're done setting up iOS project, you can now `react-native run-ios`
 ## Step 07: Paste these line to `android/build.gradle` to update all subprojects gradle
 
 ```
+ext {
+    buildToolsVersion = "27.0.3"
+    minSdkVersion = 19
+    compileSdkVersion = 27
+    targetSdkVersion = 27
+    supportLibVersion = "27.1.1"
+    googleFirebaseVersion = "16.0.1"
+    googlePlayServicesVersion = "15.0.1"
+}
+
 subprojects {
     afterEvaluate {project ->
         if (project.hasProperty("android")) {
