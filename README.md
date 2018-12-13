@@ -156,13 +156,13 @@ android {
 dependencies {
     ...
     // Paste these line
-    compile(project(':react-native-maps')){
+    implementation(project(':react-native-maps')){
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
-    compile "com.google.android.gms:play-services-location:${rootProject.ext.googlePlayServicesVersion}" // disable if you don't want to use enableHighAccuracy: true in geolocation
-    compile "com.google.android.gms:play-services-base:${rootProject.ext.googlePlayServicesVersion}"
-    compile "com.google.android.gms:play-services-maps:${rootProject.ext.googlePlayServicesVersion}"
+    implementation "com.google.android.gms:play-services-location:${rootProject.ext.googlePlayServicesVersion}" // disable if you don't want to use enableHighAccuracy: true in geolocation
+    implementation "com.google.android.gms:play-services-base:${rootProject.ext.googlePlayServicesVersion}"
+    implementation "com.google.android.gms:play-services-maps:${rootProject.ext.googlePlayServicesVersion}"
 }
 ```
 
