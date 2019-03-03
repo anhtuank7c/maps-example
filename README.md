@@ -23,25 +23,38 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 target 'MyMap' do
-    pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
-    pod 'React', path: '../node_modules/react-native', :subspecs => [    
-        'Core',
-        'RCTActionSheet',
-        'RCTAnimation',
-        'RCTGeolocation',
-        'RCTImage',
-        'RCTLinkingIOS',
-        'RCTNetwork',
-        'RCTSettings',
-        'RCTText',
-        'RCTVibration',
-        'RCTWebSocket',
-        'DevSupport'
-    ]    
+    # React Native
+    rn_path = '../node_modules/react-native'
+    rn_maps_path = '../node_modules/react-native-maps'
+
+    pod 'yoga', :path => "#{rn_path}/ReactCommon/yoga"
+    pod 'React', path: "#{rn_path}", :subspecs => [    
+      'Core',
+      'CxxBridge',
+      'RCTActionSheet',
+      'RCTAnimation',
+      'RCTGeolocation',
+      'RCTImage',
+      'RCTLinkingIOS',
+      'RCTNetwork',
+      'RCTSettings',
+      'RCTText',
+      'RCTVibration',
+      'RCTWebSocket',
+      'DevSupport'
+    ]
+    pod 'DoubleConversion', :podspec => "#{rn_path}/third-party-podspecs/DoubleConversion.podspec"
+    pod 'glog', :podspec => "#{rn_path}/third-party-podspecs/glog.podspec"
+    pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
     
-    pod 'GoogleMaps'  # <~~ remove this line if you do not want to support GoogleMaps on iOS
-    pod 'react-native-maps', path: '../node_modules/react-native-maps/'
-    pod 'react-native-google-maps', path: '../node_modules/react-native-maps/'  # <~~ if you need GoogleMaps support on iOS
+    # Required by Google Map, ignore if you use Apple Map
+    pod 'GoogleMaps', '2.5.0'
+    pod 'Google-Maps-iOS-Utils', '2.1.0'
+    pod 'GoogleUtilities', '5.3.7'
+    pod 'GoogleAppMeasurement', '5.4'
+
+    pod 'react-native-maps', path: rn_maps_path
+    pod 'react-native-google-maps', path: rn_maps_path # <~~ if you need GoogleMaps support on iOS
 end
 post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -207,7 +220,7 @@ protected List<ReactPackage> getPackages() {
 
 # WE ARE DONE.
 
-YOU ARE NOW READY TO FOLLOW [AIRBNB USAGE GUIDE.](https://github.com/airbnb/react-native-maps)
+YOU ARE NOW READY TO FOLLOW [USAGE GUIDE.](https://github.com/react-native-community/react-native-maps)
 
 
 ##########################################################################
