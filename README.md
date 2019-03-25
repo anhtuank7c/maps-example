@@ -100,7 +100,7 @@ Then create new `Credentials` key
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-@import GoogleMaps; # INSERT THIS LINE
+#import <GoogleMaps/GoogleMaps.h> # INSERT THIS LINE
 
 @implementation AppDelegate
 
