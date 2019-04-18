@@ -191,6 +191,7 @@ dependencies {
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" /> <!-- insert this line to fix android target 28+ -->
         <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
         <meta-data
           android:name="com.google.android.geo.API_KEY"
